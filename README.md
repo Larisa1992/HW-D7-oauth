@@ -1,4 +1,4 @@
-# HW-D6-Library
+# HW-D7-My-Library
 Home Work for module d6 (static and base.html)
 
 Разворачиваем проект:

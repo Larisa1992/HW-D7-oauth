@@ -1,0 +1,21 @@
+{% extends 'common/base.html' %}
+
+{% block list_header %}
+    <title>Главная страница</title>
+{% endblock %}
+
+{% block contentall %} 
+    {% if username %}  
+    <h1 class="page-header">Привет, {{ username }}!
+        {% if age %}
+        Я знаю, что тебе {{ age }} лет
+        {% else %}
+        Я знаю, что тебе &lt;возраст не указан &gt; лет
+        {% endif %}
+    </h1>  
+	<p>Тут ты можешь <a href="logout">выйти</a>.</p>  
+    {% else %}  
+        <p>Тебе нужно <a href="login">войти</a> на сайт!</p>  
+    {% endif %}
+    <p>Тебе нужно <a href="register/">зарегистрироваться</a> или <a href="login">войти на сайт</a>!</p>  
+{% endblock %}

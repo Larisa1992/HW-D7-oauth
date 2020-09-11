@@ -1,0 +1,14 @@
+{% extends 'common/base.html' %}
+
+{% block list_header %}
+	<title>Войти</title>
+{% endblock %}
+
+{% block contentall %}
+<h3 class="page-header">Страница логина</h3>
+<form method="post">  
+	{% csrf_token %}  
+	{{ form.as_ul }}  
+	<input type="submit" value="Войти">  
+</form>
+{% endblock %}

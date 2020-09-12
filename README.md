@@ -1,4 +1,4 @@
-# HW-D7-My-Library
+# HW-D7-oauth
 Home Work for module D7 (work with SocialAccount)
 
 Разворачиваем проект:

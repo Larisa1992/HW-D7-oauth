@@ -6,6 +6,7 @@ from common.forms import ProfileCreationForm
 from django.http.response import HttpResponseRedirect  
 from django.urls import reverse_lazy  
 from common.models import UserProfile
+from allauth.socialaccount.models import SocialAccount
 
 class RegisterView(FormView):
     form_class = UserCreationForm
@@ -24,7 +25,8 @@ class CreateUserProfile(FormView):
     
     form_class = ProfileCreationForm
     template_name = 'common/profile-create.html'
-    success_url = reverse_lazy('common:index')
+    success_url = reverse_lazy('books_list')
+    # success_url = reverse_lazy('common:index')
     
     def dispatch(self, request, *args, **kwargs):
         if self.request.user.is_anonymous:
@@ -39,10 +41,15 @@ class CreateUserProfile(FormView):
 
 def index(request):  
     context = {}  
+    print('request.user', request.user)
     if request.user.is_authenticated:  
         context['username'] = request.user.username
         try:
             context['age'] = UserProfile.objects.get(user=request.user).age
         except UserProfile.DoesNotExist:
+            context['github_url'] = SocialAccount.objects.get(provider='github', user=request.user).extra_data['html_url']
+            print('github_url', context['github_url'])
             print('Поймали ошибку')
+        except SocialAccount.DoesNotExist:
+            pass
     return render(request, 'common/index.html', context)

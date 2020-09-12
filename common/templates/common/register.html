@@ -1,4 +1,4 @@
-{% extends 'common/base.html' %}
+{% extends 'base.html' %}
 
 {% block list_header %}
 <meta name="viewport"  
@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block contentall %}
-<h3 class="page-header">Страница регистрации</h3>
+<h4 class="page-header">Страница регистрации</h3>
 <form method="post">  
   {% csrf_token %}  
     {{ form.as_ul }}  

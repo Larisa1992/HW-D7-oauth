@@ -8,7 +8,8 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('common.urls', namespace='common')), # пути приложения с профилями пользователя
-    path('', books_list), # books_list - метод, который будет исполнятся при запросе URL в первом аргументе
+    path('accounts/', include('allauth.urls')),
+    # path('', books_list), # books_list - метод, который будет исполнятся при запросе URL в первом аргументе
     path('index/', index, name='all_book'),
     path('index/book_increment/', book_increment),
     path('index/book_decrement/', book_decrement),
